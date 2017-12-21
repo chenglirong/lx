@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="app" ng-controller="con">
+    <button ng-click="orderBy('num')">num排序</button>
+    <button ng-click="orderBy('rq')">rq排序</button>
+    <button ng-click="filter('hg')">找火锅</button>
+    <input type="text" ng-model="a">
+    <ul>
+        <li ng-repeat="i in data | orderBy:temp | filter:a | filter:bb" >
+            <p>{{i.num}}</p> 
+            <p>{{i.rq}}</p>
+            <p>{{i.aa}}</p>
+        </li>
+    </ul>
+
+    
+    <script src="js/angular.js"></script>
+    <script>
+        var app = angular.module('app',[]);
+        
+        app.controller('con',function($scope){
+
+            $scope.data=[
+                {
+                    "num":4,
+                    "rq":"a",
+                    "aa":'你哈珀1232',
+                    "type":"zzc"
+                },
+                {
+                    "num":2,
+                    "rq":"dcs",
+                    "aa":'你哈珀12地方2',
+                    "type":"zzc"
+                },
+                {
+                    "num":1,
+                    "rq":"c",
+                    "aa":'你哈珀12上地32',
+                    "type":"hg"
+                },{
+                    "num":4,
+                    "rq":"bxd",
+                    "aa":'你哈珀123法国的2',
+                    "type":"tg"
+                }
+            ]
+            $scope.orderBy=function (ll) {
+                $scope.temp=ll;
+            }
+            $scope.filter=function(aa){
+                $scope.bb=aa;
+            }
+            
+        })
+    </script>
+</body>
+</html>
